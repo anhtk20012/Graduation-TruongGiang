@@ -1,5 +1,6 @@
-const graduationDate = new Date("Apr 17, 2026 09:00:00").getTime();
-
+const graduationDate = new Date("Apr 17, 2026 10:00:00").getTime();
+// const graduationDate = new Date().getTime() - 86400000;
+// const graduationDate = new Date().getTime() + 5000;
 const timer = setInterval(function() {
     const now = new Date().getTime();
     const distance = graduationDate - now;
@@ -16,8 +17,24 @@ const timer = setInterval(function() {
 
     if (distance < 0) {
         clearInterval(timer);
-        document.getElementById("countdown").innerHTML = "LỄ TỐT NGHIỆP ĐANG DIỄN RA!";
+        document.getElementById("countdown").innerHTML = `
+            <div class="event-started">
+                <h3 class="status-text-running">Lễ Tốt Nghiệp Đang Diễn Ra</h3>
+                <div class="heart-icon">❤️</div>
+            </div>
+        `;
     }
+
+    if (distance < -86400000) {
+        clearInterval(timer);
+        document.getElementById("countdown").innerHTML = `
+            <div class="event-started">
+                <h3 class="status-text">Cảm ơn bạn đã đến dự lễ tốt nghiệp!</h3>
+                <div class="heart-icon">❤️</div>
+            </div>
+        `;
+    }
+
 }, 1000);
 
 window.onscroll = function() {

@@ -1,3 +1,6 @@
+/* =========================================
+   1. RESET & GLOBAL STYLES 
+   ========================================= */
 * {
     margin: 0;
     padding: 0;
@@ -10,6 +13,9 @@ body {
     color: #5d4037;
 }
 
+/* =========================================
+   2. NAVIGATION BAR
+   ========================================= */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -52,9 +58,12 @@ nav ul li a:hover {
     color: #ff8b8b;
 }
 
+/* =========================================
+   3. HERO SECTION
+   ========================================= */
 .hero {
     height: 100vh;
-    background: url('https://cdn2.tuoitre.vn/thumb_w/1200/471584752817336320/2025/5/14/hutech-17472079488051209821472-19-0-1359-2560-crop-17472079733311402908034.jpg') no-repeat center center/cover;
+    background: url('./background.png') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -104,6 +113,9 @@ nav ul li a:hover {
     margin-bottom: 40px;
 }
 
+/* =========================================
+   4. COUNTDOWN TIMER
+   ========================================= */
 #countdown {
     display: flex;
     justify-content: center;
@@ -133,6 +145,9 @@ nav ul li a:hover {
     text-transform: uppercase;
 }
 
+/* =========================================
+   5. CALL TO ACTION (CTA) BUTTON
+   ========================================= */
 .cta-button {
     position: relative;
     padding: 18px 50px;
@@ -163,33 +178,83 @@ nav ul li a:hover {
     animation: autoShine 4s infinite;
 }
 
-@keyframes autoShine {
-    0% {
-        left: -150%;
-    }
-
-    25% {
-        left: 150%;
-    }
-
-    100% {
-        left: 150%;
-    }
-}
-
-@keyframes floatingButton {
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-8px);
-    }
-}
-
 .cta-button:hover {
     transform: scale(1.05) translateY(-5px);
     box-shadow: 0 15px 35px rgba(255, 139, 139, 0.6);
     background: linear-gradient(45deg, #ffb4a2, #ff8b8b);
+}
+
+/* =========================================
+   6. EVENT STATUS & ICONS
+   ========================================= */
+.event-started {
+    width: 100%;
+    animation: fadeInScale 1s ease-out;
+}
+
+.status-text, .status-text-running {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: #444;
+    font-style: italic;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.heart-icon {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    color: #ff8b8b;
+    animation: heartBeat 1.5s infinite;
+}
+
+/* =========================================
+   7. ANIMATIONS (@keyframes)
+   ========================================= */
+@keyframes autoShine {
+    0% { left: -150%; }
+    25% { left: 150%; }
+    100% { left: 150%; }
+}
+
+@keyframes floatingButton {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* =========================================
+   8. RESPONSIVE DESIGN
+   ========================================= */
+@media screen and (max-width: 768px) {
+    .student-name {
+        font-size: 3.8rem;
+    }
+    
+    #countdown {
+        gap: 10px;
+    }
+
+    .status-text {
+        font-size: 2.5rem;
+    }
+
+    .status-text-running {
+        font-size: 1.7rem;
+    }
 }
