@@ -5,7 +5,8 @@
 }
 
 body {
-    font-family: 'Be Vietnam Pro', sans-serif;
+    /* font-family: 'Be Vietnam Pro', sans-serif; */
+    font-family: 'Montserrat', sans-serif;
     background-color: #fff9f9;
     color: #444;
     line-height: 1.6;
@@ -136,6 +137,7 @@ body {
 }
 
 .message-quote {
+    font-family: 'Montserrat', serif;
     text-align: center;
     font-size: 1.05rem;
     line-height: 1.8;
@@ -148,6 +150,7 @@ body {
 }
 
 .message-content {
+    font-family: 'Montserrat', sans-serif;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 50px;
@@ -225,22 +228,30 @@ body {
 }
 
 .invite-script {
-    font-family: 'Dancing Script', cursive;
-    font-size: 3.1rem;
-    font-weight: 600;
-    color: #2e2e2e;
-    margin-bottom: 12px;
-    line-height: 1.1;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    color: #333;
 }
 
 .invite-heading {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     font-weight: 500;
     letter-spacing: 2px;
     color: #444;
-    text-transform: uppercase;
+    text-transform: capitalize;
     margin-bottom: 42px;
+}
+
+#inviteHeading {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
 }
 
 .invite-gallery {
@@ -330,25 +341,62 @@ body {
 }
 
 .calendar-days .highlight-day {
+    width: 54px;
+    height: 54px;
+    margin: 0 auto;
+    border: 2px solid rgba(216, 92, 74, 0.28);
+    border-radius: 50%;
+    display: flex;
     flex-direction: column;
-    gap: 2px;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.85);
 }
 
 .calendar-days .grad-icon {
-    font-size: 1.4rem;
+    font-size: 1.15rem;
     line-height: 1;
     display: inline-block;
     transform-origin: center bottom;
-    animation: gradShake 1.6s ease-in-out infinite;
+    animation: gradShakeBounce 1.8s ease-in-out infinite;
 }
 
 .calendar-days .day-number {
-    font-size: 1rem;
+    font-size: 1.15rem;
     color: #d28a8a;
-    font-weight: 500;
+    line-height: 1;
+    display: inline-block;
+    transform-origin: center bottom;
+    animation: gradShakeBounce 1.8s ease-in-out infinite;
 }
 
-@keyframes gradShake {
+.calendar-days .highlight-day::before {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border: 1.5px solid rgba(216, 92, 74, 0.16);
+    border-radius: 50%;
+    animation: calendarPulseRing 2s ease-out infinite;
+}
+
+@keyframes calendarPulseRing {
+    0% {
+        transform: scale(0.92);
+        opacity: 0.7;
+    }
+    70% {
+        transform: scale(1.08);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1.08);
+        opacity: 0;
+    }
+}
+
+@keyframes gradShakeBounce {
     0% {
         transform: rotate(0deg);
     }
@@ -458,7 +506,7 @@ body {
 }
 
 .event-school-name {
-    font-family: 'Be Vietnam Pro', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.5rem;
     color: #606060;
     margin-bottom: 26px;
@@ -475,35 +523,118 @@ body {
 }
 
 .event-address {
-    font-family: 'Be Vietnam Pro', sans-serif;
-    font-size: 1.4rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
     color: #666;
     line-height: 1.8;
     margin-bottom: 30px;
 }
 
 .event-map-link {
+    position: relative;
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
+    gap: 12px;
     text-decoration: none;
-    color: #333;
+    color: #2f2f2f;
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.55rem;
+    font-size: 1.3rem;
     font-weight: 500;
     letter-spacing: 1px;
     text-transform: uppercase;
+    padding: 16px 30px;
+    border: 2px solid rgba(216, 92, 74, 0.35);
+    border-radius: 999px;
+    background: linear-gradient(135deg, #fff7f6, #ffffff);
+    box-shadow: 0 8px 22px rgba(216, 92, 74, 0.12);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+    animation: mapButtonPulse 2s ease-in-out infinite;
+}
+
+.event-map-link:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 14px 30px rgba(216, 92, 74, 0.2);
+    border-color: rgba(216, 92, 74, 0.6);
+    background: linear-gradient(135deg, #fff2f0, #ffffff);
+}
+
+.event-map-link:active {
+    transform: translateY(-1px) scale(0.99);
+}
+
+.event-map-link:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(216, 92, 74, 0.18), 0 12px 28px rgba(216, 92, 74, 0.18);
 }
 
 .map-icon {
-    font-size: 1.7rem;
+    font-size: 1.55rem;
     line-height: 1;
+    display: inline-block;
+    animation: mapPinBounce 1.3s ease-in-out infinite;
+}
+
+.event-map-hint {
+    margin-top: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: #7a7a7a;
+    line-height: 1.6;
+}
+
+.map-text {
+    position: relative;
+    z-index: 1;
+}
+
+.map-arrow {
+    font-size: 1.2rem;
+    line-height: 1;
+    color: #d85c4a;
+    display: inline-block;
+    animation: mapArrowNudge 0.9s ease-in-out infinite alternate;
+}
+
+@keyframes mapPinBounce {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    25% {
+        transform: translateY(-2px) scale(1.06);
+    }
+    50% {
+        transform: translateY(0) scale(1);
+    }
+    75% {
+        transform: translateY(-1px) scale(1.03);
+    }
+}
+
+@keyframes mapArrowNudge {
+    0% {
+        transform: translateX(0);
+        opacity: 0.75;
+    }
+    100% {
+        transform: translateX(6px);
+        opacity: 1;
+    }
+}
+
+@keyframes mapButtonPulse {
+    0%, 100% {
+        box-shadow: 0 8px 22px rgba(216, 92, 74, 0.12);
+    }
+    50% {
+        box-shadow: 0 12px 28px rgba(216, 92, 74, 0.2);
+    }
 }
 
 .schedule-section {
     width: 100%;
     background: #ffffff;
-    padding: 56px 16px 0px;
+    padding: 24px 16px 0px;
 }
 
 .schedule-container {
@@ -558,7 +689,7 @@ body {
 
 .timeline-item {
     display: grid;
-    grid-template-columns: 0.5fr 50px 1fr;
+    grid-template-columns: 0.5fr 70px 1fr;
     align-items: center;
     column-gap: 14px;
 }
@@ -578,7 +709,7 @@ body {
 }
 
 .timeline-text {
-    font-family: 'Be Vietnam Pro', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.35rem;
     color: #666;
     text-align: left;
@@ -586,7 +717,7 @@ body {
 }
 
 .schedule-note {
-    font-family: 'Be Vietnam Pro', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.35rem;
     line-height: 1.8;
     color: #6d6d6d;
@@ -657,7 +788,7 @@ body {
 }
 
 .album-text {
-    font-family: 'Be Vietnam Pro', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.08rem;
     line-height: 1.9;
     color: #666;
@@ -764,7 +895,7 @@ body {
     border: 2px solid #9f9f9f;
     border-radius: 999px;
     background: #ffffff;
-    font-family: 'Be Vietnam Pro', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     color: #4f4f4f;
     outline: none;
 }
@@ -806,7 +937,7 @@ body {
     border: 2px solid #a8a8a8;
     border-radius: 999px;
     background: #ffffff;
-    font-family: 'Be Vietnam Pro', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.08rem;
     color: #5a5a5a;
     display: flex;
@@ -871,7 +1002,7 @@ body {
 
 .custom-select-option {
     padding: 14px 20px;
-    font-family: 'Be Vietnam Pro', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.02rem;
     color: #555;
     cursor: pointer;
@@ -907,9 +1038,9 @@ body {
 }
 
 .guestbook-note {
-    margin: 28px 180px 0;
+    margin: 28px 160px 0;
     text-align: center;
-    font-family: 'Be Vietnam Pro', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.18rem;
     line-height: 1.8;
     color: #6d6d6d;
@@ -1042,15 +1173,21 @@ body {
     }
 
     .invite-script {
-        font-size: 2.2rem;
+        font-size: 1.1rem;
+        letter-spacing: 1px;
         margin-bottom: 8px;
     }
 
     .invite-heading {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
         line-height: 1.6;
         letter-spacing: 1px;
         margin-bottom: 26px;
+    }
+ 
+    #inviteHeading {
+        font-size: 1.8rem;
+        margin-bottom: 8px;
     }
 
     .invite-gallery {
@@ -1147,15 +1284,20 @@ body {
 
     .event-map-link {
         font-size: 1rem;
-        gap: 6px;
+        padding: 12px 20px;
+        gap: 8px;
     }
 
     .map-icon {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
+    }
+
+    .event-map-hint {
+        font-size: 0.82rem;
     }
 
     .schedule-section {
-        padding: 38px 12px 0px;
+        padding: 16px 12px 0px;
     }
 
     .schedule-media {
@@ -1180,7 +1322,7 @@ body {
     }
 
     .timeline-item {
-        grid-template-columns: 0.5fr 30px 1fr;
+        grid-template-columns: 0.4fr 25px 1fr;
         column-gap: 10px;
     }
 

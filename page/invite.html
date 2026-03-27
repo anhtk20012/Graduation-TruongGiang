@@ -61,7 +61,8 @@
                 <div class="invite-line"></div>
 
                 <h2 class="invite-script">Thân mời</h2>
-                <p class="invite-heading">CÔ, CHÚ, ANH, CHỊ ĐẾN DỰ LỄ TỐT NGHIỆP</p>
+                <p class="invite-heading" id="inviteHeading" >Cô, chú, anh, chị và bạn bè</p>
+                <p class="invite-heading" >ĐẾN DỰ LỄ TỐT NGHIỆP</p>
 
                 <div class="invite-gallery">
                     <div class="invite-photo-card side-photo">
@@ -120,10 +121,14 @@
 
                 <p class="event-address">Khu Công nghệ cao XLHN, Hiệp Phú, Thủ Đức, Hồ Chí Minh, Việt Nam</p>
 
-                <a href="https://maps.app.goo.gl/qu2r7hetkH5hUyrA9" class="event-map-link">
+                <a href="https://maps.app.goo.gl/qu2r7hetkH5hUyrA9" class="event-map-link" target="_blank" rel="noopener noreferrer">
                     <span class="map-icon">📍</span>
-                    <span>CHỈ ĐƯỜNG</span>
+                    <span class="map-text">CHỈ ĐƯỜNG</span>
+                    <span class="map-arrow">➜</span>
                 </a>
+                <p class="event-map-hint">
+                    (Bấm vào nút chỉ đường để xem vị trí trên bản đồ)
+                </p>
             </div>
         </section>
 
@@ -145,7 +150,7 @@
                         </div>
 
                         <div class="timeline-item">
-                            <span class="timeline-time">10:30</span>
+                            <span class="timeline-time">10:00</span>
                             <span class="timeline-line"></span>
                             <span class="timeline-text">Chung vui và chụp ảnh</span>
                         </div>
@@ -477,6 +482,14 @@
             submitButton.textContent = originalButtonText;
             }
         });
+        
+        const params = new URLSearchParams(window.location.search);
+        const inviteValue = params.get("invite");
+        const inviteHeading = document.getElementById("inviteHeading");
+
+        if (inviteHeading && inviteValue && inviteValue.trim() !== "") {
+            inviteHeading.textContent = `${inviteValue.trim()}`;
+        }
     </script>
 </body>
 </html>

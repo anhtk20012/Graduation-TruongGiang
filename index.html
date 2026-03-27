@@ -34,7 +34,7 @@
                 <div class="time-box"><span id="seconds">00</span><p>Giây</p></div>
             </div>
             
-            <a href="./page/invite.html" class="invitation-letter">
+            <a href="./page/invite.html" class="invitation-letter" id="invitePageLink">
                 <div class="envelope-wrapper">
                     <div class="envelope">
                         <div class="wax-seal">🎓</div>
@@ -46,5 +46,20 @@
     </section>
 
     <script src="./js/script.js"></script>
+
+    <script>
+        const invitePageLink = document.getElementById("invitePageLink");
+
+        if (invitePageLink) {
+            const url = new URL(invitePageLink.getAttribute("href"), window.location.origin);
+            const currentParams = new URLSearchParams(window.location.search);
+
+            currentParams.forEach((value, key) => {
+            url.searchParams.set(key, value);
+            });
+
+            invitePageLink.href = url.pathname + url.search;
+        }
+    </script>
 </body>
 </html>
