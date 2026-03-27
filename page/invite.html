@@ -234,7 +234,7 @@
                     <textarea
                         class="guestbook-textarea"
                         id="guestMessage"
-                        placeholder="Gửi lời nhắn đến An Ngọc"
+                        placeholder="Gửi lời nhắn đến Trường Giang"
                     ></textarea>
 
                     <div class="guestbook-select-wrap custom-select" id="attendanceSelect">
@@ -450,7 +450,7 @@
             });
 
             const result = await response.json();
-
+            alert(result.message);
             if (!response.ok) {
                 throw new Error(result.error || "Không thể gửi phản hồi.");
             }

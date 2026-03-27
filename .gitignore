@@ -1,2 +1,5 @@
 private
 node_modules
+AGENTS.md
+.vercel
+.env*.local
