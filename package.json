@@ -1,0 +1,24 @@
+{
+  "name": "graduation_invitation",
+  "version": "1.0.0",
+  "description": "Graduation invitation website with guestbook, RSVP, and Google Sheets integration.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anhtk20012/Graduation-TruongGiang.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/anhtk20012/Graduation-TruongGiang/issues"
+  },
+  "homepage": "https://github.com/anhtk20012/Graduation-TruongGiang#readme",
+  "dependencies": {
+    "googleapis": "^171.4.0"
+  }
+}

@@ -249,6 +249,8 @@
                     <button type="submit" class="guestbook-submit">
                         GỬI LỜI NHẮN & XÁC NHẬN
                     </button>
+
+                    <p id="guestbookStatus" style="margin-top:12px;"></p>
                 </form>
 
                 <p class="guestbook-note">
@@ -382,6 +384,89 @@
             if (!customSelect.contains(e.target)) {
                 customSelect.classList.remove('active');
                 trigger.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        const guestbookForm = document.getElementById("guestbookForm");
+        const guestName = document.getElementById("guestName");
+        const guestMessage = document.getElementById("guestMessage");
+        const attendanceValue = document.getElementById("attendanceValue");
+        const guestbookStatus = document.getElementById("guestbookStatus");
+
+        guestbookForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const name = guestName.value.trim();
+            const message = guestMessage.value.trim();
+            const attendance = attendanceValue.value.trim();
+
+            guestbookStatus.textContent = "";
+            guestbookStatus.style.color = "#666";
+
+            if (!name) {
+            guestbookStatus.textContent = "Vui lòng nhập tên của bạn.";
+            guestbookStatus.style.color = "#c0392b";
+            return;
+            }
+
+            if (!message) {
+            guestbookStatus.textContent = "Vui lòng nhập lời nhắn.";
+            guestbookStatus.style.color = "#c0392b";
+            return;
+            }
+
+            if (!attendance) {
+            guestbookStatus.textContent = "Vui lòng chọn xác nhận tham dự.";
+            guestbookStatus.style.color = "#c0392b";
+            return;
+            }
+
+            const submitButton = guestbookForm.querySelector(".guestbook-submit");
+            const originalButtonText = submitButton.textContent;
+
+            try {
+            submitButton.disabled = true;
+            submitButton.textContent = "ĐANG GỬI...";
+
+            const response = await fetch("/api/guestbook", {
+                method: "POST",
+                headers: {
+                "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                name,
+                message,
+                attendance
+                })
+            });
+
+            const result = await response.json();
+
+            if (!response.ok) {
+                throw new Error(result.error || "Không thể gửi phản hồi.");
+            }
+
+            guestbookStatus.textContent = "Đã gửi lời nhắn thành công. Cảm ơn bạn rất nhiều!";
+            guestbookStatus.style.color = "#2d7a46";
+
+            guestbookForm.reset();
+            attendanceValue.value = "";
+
+            const selectText = document.querySelector(".custom-select-text");
+            if (selectText) {
+                selectText.textContent = "Bạn sẽ đến chứ?";
+            }
+
+            document.querySelectorAll(".custom-select-option").forEach(option => {
+                option.classList.remove("selected");
+            });
+            } catch (error) {
+            console.error(error);
+            guestbookStatus.textContent = error.message || "Có lỗi xảy ra khi gửi phản hồi.";
+            guestbookStatus.style.color = "#c0392b";
+            } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = originalButtonText;
             }
         });
     </script>
