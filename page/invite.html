@@ -223,10 +223,19 @@
                     </div>
                 </div>
 
-                <form class="guestbook-form">
-                    <input type="text" class="guestbook-input" placeholder="Tên của bạn">
+                <form class="guestbook-form" id="guestbookForm">
+                    <input
+                        type="text"
+                        class="guestbook-input"
+                        id="guestName"
+                        placeholder="Tên của bạn"
+                    >
 
-                    <textarea class="guestbook-textarea" placeholder="Gửi lời nhắn đến Trường Giang"></textarea>
+                    <textarea
+                        class="guestbook-textarea"
+                        id="guestMessage"
+                        placeholder="Gửi lời nhắn đến An Ngọc"
+                    ></textarea>
 
                     <div class="guestbook-select-wrap custom-select" id="attendanceSelect">
                         <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
@@ -235,10 +244,10 @@
                         </button>
 
                         <div class="custom-select-dropdown" role="listbox">
-                            <div class="custom-select-option" data-value="yes" role="option">
+                            <div class="custom-select-option" data-value="Có, mình sẽ đến" role="option">
                                 Có, mình sẽ đến
                             </div>
-                            <div class="custom-select-option" data-value="no" role="option">
+                            <div class="custom-select-option" data-value="Xin lỗi, mình không đến được" role="option">
                                 Xin lỗi, mình không đến được
                             </div>
                         </div>
