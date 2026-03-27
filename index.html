@@ -12,9 +12,9 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Dancing+Script:wght@600&family=Montserrat:wght@300;500&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
 
-    <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon">
 
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
     
     <title>Graduation Invitation</title>
 </head>
@@ -40,7 +40,7 @@
                 <div class="time-box"><span id="seconds">00</span><p>Giây</p></div>
             </div>
             
-            <a href="./page/invite.html" class="invitation-letter" id="invitePageLink">
+            <a href="/page/invite.html" class="invitation-letter" id="invitePageLink">
                 <div class="envelope-wrapper">
                     <div class="envelope">
                         <div class="wax-seal">🎓</div>
@@ -51,18 +51,24 @@
         <div class="overlay"></div>
     </section>
 
-    <script src="./js/script.js"></script>
+    <script src="/js/script.js"></script>
 
     <script>
+        const pathParts = window.location.pathname.split("/");
+        const inviteSlug = pathParts[2] || "";
+
         const invitePageLink = document.getElementById("invitePageLink");
 
         if (invitePageLink) {
             const url = new URL(invitePageLink.getAttribute("href"), window.location.origin);
             const currentParams = new URLSearchParams(window.location.search);
-
+            if (inviteSlug) {
+                currentParams.set("invite", inviteSlug);
+            }
             currentParams.forEach((value, key) => {
             url.searchParams.set(key, value);
             });
+            console.log(url.search);
 
             invitePageLink.href = url.pathname + url.search;
         }
