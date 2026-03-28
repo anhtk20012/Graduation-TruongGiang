@@ -1,6 +1,11 @@
 const graduationDate = new Date("Apr 12, 2026 10:30:00").getTime();
 // const graduationDate = new Date().getTime() - 86400000;
 // const graduationDate = new Date().getTime() + 5000;
+
+window.addEventListener("DOMContentLoaded", () => {
+    document.body.classList.add("page-loaded");
+});
+
 const timer = setInterval(function() {
     const now = new Date().getTime();
     const distance = graduationDate - now;
@@ -39,6 +44,8 @@ const timer = setInterval(function() {
 
 window.onscroll = function() {
     const nav = document.querySelector('.navbar');
+    if (!nav) return;
+
     if (window.pageYOffset > 50) {
         nav.style.background = "#001f3f";
         nav.style.boxShadow = "0 2px 10px rgba(0,0,0,0.3)";
@@ -47,3 +54,22 @@ window.onscroll = function() {
         nav.style.boxShadow = "none";
     }
 };
+
+// const pathParts = window.location.pathname.split("/");
+// const inviteSlug = pathParts[2] || "";
+
+const invitePageLink = document.getElementById("invitePageLink");
+
+if (invitePageLink) {
+    const url = new URL(invitePageLink.getAttribute("href"), window.location.origin);
+    const currentParams = new URLSearchParams(window.location.search);
+    // if (inviteSlug) {
+    //     currentParams.set("invite", inviteSlug);
+    // }
+    currentParams.forEach((value, key) => {
+    url.searchParams.set(key, value);
+    });
+    // console.log(url.search);
+
+    invitePageLink.href = url.pathname + url.search;
+}

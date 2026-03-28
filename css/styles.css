@@ -9,7 +9,7 @@
 }
 
 body {
-    font-family: 'Be Vietnam Pro', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: #fff9f9;
     color: #5d4037;
 }
@@ -106,7 +106,7 @@ nav ul li a:hover {
 }
 
 .main-title {
-    font-family: 'Be Vietnam Pro', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 8px;
@@ -327,5 +327,278 @@ nav ul li a:hover {
 
     .status-text-running {
         font-size: 1.7rem;
+    }
+}
+
+/* =========================================
+   9. LUXURY OPENING ANIMATION
+   ========================================= */
+body {
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 50% 45%, rgba(255,255,255,0.92) 0%, rgba(255,246,246,0.86) 26%, rgba(255,238,238,0.38) 52%, rgba(255,238,238,0) 72%),
+        linear-gradient(135deg, rgba(255,248,248,0.95), rgba(255,240,240,0.92));
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 1s ease, transform 1.3s ease;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: -20%;
+    z-index: 9998;
+    pointer-events: none;
+    opacity: 0;
+    background:
+        linear-gradient(115deg, rgba(255,255,255,0) 30%, rgba(255,255,255,0.8) 48%, rgba(255,255,255,0) 66%);
+    transform: translateX(-120%) rotate(8deg);
+}
+
+body.page-loaded::before {
+    opacity: 0;
+    transform: scale(1.08);
+}
+
+body.page-loaded::after {
+    animation: silkSweep 1.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero {
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: -8%;
+    background: inherit;
+    background-position: center;
+    background-size: cover;
+    z-index: 0;
+    transform: scale(1.18);
+    filter: blur(8px) brightness(1.04);
+    opacity: 0.4;
+}
+
+body.page-loaded .hero::before {
+    animation: cinematicZoom 2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.overlay {
+    opacity: 0;
+}
+
+body.page-loaded .overlay {
+    animation: overlaySoftIn 1.4s ease forwards;
+}
+
+.hero-content {
+    transform-style: preserve-3d;
+    will-change: transform, opacity, filter;
+}
+
+.hero-content > * {
+    opacity: 0;
+    filter: blur(14px);
+    transform: translateY(34px) scale(0.96);
+}
+
+body.page-loaded .sub-title {
+    animation: luxuryReveal 1s cubic-bezier(0.22, 1, 0.36, 1) 0.18s forwards;
+}
+
+body.page-loaded .student-name {
+    animation: luxuryReveal 1.15s cubic-bezier(0.22, 1, 0.36, 1) 0.42s forwards;
+}
+
+body.page-loaded .main-title {
+    animation: luxuryReveal 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.68s forwards;
+}
+
+body.page-loaded .event-date {
+    animation: luxuryReveal 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.92s forwards;
+}
+
+body.page-loaded #countdown {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translateY(28px) scale(0.96);
+    animation: luxuryReveal 1s cubic-bezier(0.22, 1, 0.36, 1) 1.16s forwards;
+}
+
+.invitation-letter {
+    transform-origin: center center;
+}
+
+body.page-loaded .invitation-letter {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(34px) scale(0.84) rotate(-4deg);
+    animation:
+        envelopeGrandEntrance 1.25s cubic-bezier(0.18, 0.89, 0.32, 1.28) 1.4s forwards,
+        floatingLetter 3.4s ease-in-out 2.85s infinite;
+}
+
+.envelope-wrapper {
+    box-shadow:
+        0 12px 30px rgba(255, 139, 139, 0.18),
+        0 2px 8px rgba(255, 255, 255, 0.55) inset;
+}
+
+body.page-loaded .envelope-wrapper {
+    animation:
+        envelopeTiltIntro 1.3s cubic-bezier(0.2, 0.8, 0.2, 1) 1.52s both,
+        shakeEnvelope 3s ease-in-out 3.1s infinite;
+}
+
+.wax-seal::after {
+    content: "";
+    position: absolute;
+    inset: -25%;
+    background: linear-gradient(135deg, rgba(255,255,255,0) 35%, rgba(255,255,255,0.65) 50%, rgba(255,255,255,0) 65%);
+    transform: translateX(-140%) rotate(18deg);
+}
+
+body.page-loaded .wax-seal::after {
+    animation: sealShimmer 2.2s ease 2.1s forwards;
+}
+
+.time-box {
+    backdrop-filter: blur(8px);
+    box-shadow:
+        0 14px 30px rgba(255, 139, 139, 0.14),
+        0 1px 0 rgba(255,255,255,0.8) inset;
+}
+
+body.page-loaded .time-box {
+    animation: timerPop 0.9s cubic-bezier(0.2, 0.9, 0.2, 1) backwards;
+}
+
+body.page-loaded .time-box:nth-child(1) { animation-delay: 1.26s; }
+body.page-loaded .time-box:nth-child(2) { animation-delay: 1.36s; }
+body.page-loaded .time-box:nth-child(3) { animation-delay: 1.46s; }
+body.page-loaded .time-box:nth-child(4) { animation-delay: 1.56s; }
+
+@keyframes luxuryReveal {
+    0% {
+        opacity: 0;
+        filter: blur(14px);
+        transform: translateY(34px) scale(0.96);
+    }
+    60% {
+        opacity: 1;
+        filter: blur(2px);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes cinematicZoom {
+    0% {
+        opacity: 0.35;
+        transform: scale(1.18);
+        filter: blur(10px) brightness(1.08);
+    }
+    100% {
+        opacity: 0.92;
+        transform: scale(1.03);
+        filter: blur(0) brightness(1);
+    }
+}
+
+@keyframes overlaySoftIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes silkSweep {
+    0% {
+        opacity: 0;
+        transform: translateX(-120%) rotate(8deg);
+    }
+    15% {
+        opacity: 0.95;
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(120%) rotate(8deg);
+    }
+}
+
+@keyframes envelopeGrandEntrance {
+    0% {
+        opacity: 0;
+        filter: blur(10px);
+        transform: translateY(34px) scale(0.84) rotate(-4deg);
+    }
+    55% {
+        opacity: 1;
+        filter: blur(1px);
+        transform: translateY(-6px) scale(1.05) rotate(2deg);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+}
+
+@keyframes envelopeTiltIntro {
+    0% {
+        transform: rotate(-10deg) scale(0.92);
+    }
+    45% {
+        transform: rotate(6deg) scale(1.05);
+    }
+    70% {
+        transform: rotate(-3deg) scale(0.98);
+    }
+    100% {
+        transform: rotate(0deg) scale(1);
+    }
+}
+
+@keyframes sealShimmer {
+    0% {
+        transform: translateX(-140%) rotate(18deg);
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(140%) rotate(18deg);
+        opacity: 0;
+    }
+}
+
+@keyframes timerPop {
+    0% {
+        opacity: 0;
+        transform: translateY(24px) scale(0.88);
+    }
+    65% {
+        opacity: 1;
+        transform: translateY(-4px) scale(1.04);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
     }
 }
