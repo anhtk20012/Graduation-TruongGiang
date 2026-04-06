@@ -1033,7 +1033,7 @@ body {
     top: calc(100% + 10px);
     left: 0;
     width: 100%;
-    background: #ffffff !important;
+    background: #ffffff;
     border: 2px solid #a8a8a8;
     border-radius: 22px;
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
@@ -1061,6 +1061,7 @@ body {
 }
 
 .custom-select-option:hover {
+    border-radius: 10px;
     background: #f6f6f6;
     color: #222;
 }
@@ -1072,6 +1073,7 @@ body {
 }
 
 .guestbook-submit {
+    margin-top: 30px;
     cursor: pointer;
     text-transform: uppercase;
     font-family: 'Montserrat', sans-serif;
@@ -1435,7 +1437,7 @@ body {
     }
 
     .guestbook-section {
-        padding: 42px 24px 0px;
+        padding: 42px 12px 0px;
     }
 
     .guestbook-header {
@@ -1525,7 +1527,7 @@ body {
 
     .guestbook-note {
         margin: 22px 0 0;
-        font-size: 0.92rem;
+        font-size: 0.85rem;
         line-height: 1.8;
     }
 
