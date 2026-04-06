@@ -853,7 +853,7 @@ body {
 .guestbook-section {
     width: 100%;
     background: #ffffff;
-    padding: 56px 64px 0px;
+    padding: 56px 16px 0px;
 }
 
 .guestbook-container {
@@ -1435,7 +1435,7 @@ body {
     }
 
     .guestbook-section {
-        padding: 42px 12px 0px;
+        padding: 42px 24px 0px;
     }
 
     .guestbook-header {
