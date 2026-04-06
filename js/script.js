@@ -55,21 +55,20 @@ window.onscroll = function() {
     }
 };
 
-// const pathParts = window.location.pathname.split("/");
-// const inviteSlug = pathParts[2] || "";
+const pathParts = window.location.pathname.split("/");
+const inviteSlug = pathParts[2] ? pathParts[2].split(".")[0] : "";
 
 const invitePageLink = document.getElementById("invitePageLink");
 
 if (invitePageLink) {
     const url = new URL(invitePageLink.getAttribute("href"), window.location.origin);
     const currentParams = new URLSearchParams(window.location.search);
-    // if (inviteSlug) {
-    //     currentParams.set("invite", inviteSlug);
-    // }
+    if (inviteSlug) {
+        currentParams.set("invite", inviteSlug);
+    }
     currentParams.forEach((value, key) => {
     url.searchParams.set(key, value);
     });
-    // console.log(url.search);
 
     invitePageLink.href = url.pathname + url.search;
 }
