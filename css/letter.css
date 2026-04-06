@@ -742,9 +742,17 @@ body {
 .phone-item {
     font-size: 1.2rem;
     display: flex;
+    /* flex-direction: column; */
     align-items: center;
     justify-content: center;
     gap: 12px;
+}
+
+.phone-text {
+    font-family: 'Montserrat', sans-serif;
+    color: #5a5a5a;
+    text-decoration: none;
+    transition: color 0.25s ease;
 }
 
 .timeline-text {
